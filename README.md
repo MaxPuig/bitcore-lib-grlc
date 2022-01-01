@@ -1,200 +1,97 @@
-# Bitcore
+Litecore Library
+=======
 
+[![NPM Package](https://img.shields.io/npm/v/litecore-lib.svg?style=flat-square)](https://www.npmjs.org/package/litecore-lib)
+[![Build Status](https://img.shields.io/travis/litecoin-project/litecore-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/litecoin-project/litecore-lib)
+[![Coverage Status](https://img.shields.io/coveralls/litecoin-project/litecore-lib.svg?style=flat-square)](https://coveralls.io/r/litecoin-project/litecore-lib)
 
+A pure and powerful JavaScript Litecoin library.
 
-  <p align="center">
-  <img alt="npm" src="https://img.shields.io/npm/v/bitcore-lib">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/bitpay/bitcore">
-  <a href="https://opensource.org/licenses/MIT/" target="_blank"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-blue.svg" style="display: inherit;"/></a>
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/bitpay/bitcore">
-  <br>
- <img src="https://circleci.com/gh/bitpay/bitcore.svg?style=shield" alt="master build">
-</p>
-  
-  
-  
-**Infrastructure to build Bitcoin and blockchain-based applications for the next generation of financial technology.**
+## Principles
 
-## Getting Started
+Litecoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Litecoin network allows for highly resilient litecoin infrastructure, and the developer community needs reliable, open-source tools to implement litecoin apps and services.
 
-### Requirements
+## Get Started
 
-- Trusted P2P Peer
-- MongoDB Server >= v3.4
-- make g++ gcc 
-
-### Checkout the repo
-
-
-```sh
-git clone git@github.com:bitpay/bitcore.git
-git checkout master
-npm install
+```
+npm install litecore-lib
 ```
 
-## Setup Guide
-
-### 1. Setup Bitcore config
-
-<details>
-<summary>Example bitcore.config.json</summary>
-<br>
-
-```json
-{
-  "bitcoreNode": {
-    "chains": {
-      "BTC": {
-        "mainnet": {
-          "chainSource": "p2p",
-          "trustedPeers": [
-            {
-              "host": "127.0.0.1",
-              "port": 20008
-            }
-          ],
-          "rpc": {
-            "host": "127.0.0.1",
-            "port": 20009,
-            "username": "username",
-            "password": "password"
-          }
-        },
-        "regtest": {
-          "chainSource": "p2p",
-          "trustedPeers": [
-            {
-              "host": "127.0.0.1",
-              "port": 20020
-            }
-          ],
-          "rpc": {
-            "host": "127.0.0.1",
-            "port": 20021,
-            "username": "username",
-            "password": "password"
-          }
-        }
-      },
-      "BCH": {
-        "mainnet": {
-          "parentChain": "BTC",
-          "forkHeight": 478558,
-          "trustedPeers": [
-            {
-              "host": "127.0.0.1",
-              "port": 30008
-            }
-          ],
-          "rpc": {
-            "host": "127.0.0.1",
-            "port": 30009,
-            "username": "username",
-            "password": "password"
-          }
-        },
-        "regtest": {
-          "chainSource": "p2p",
-          "trustedPeers": [
-            {
-              "host": "127.0.0.1",
-              "port": 30020
-            }
-          ],
-          "rpc": {
-            "host": "127.0.0.1",
-            "port": 30021,
-            "username": "username",
-            "password": "password"
-          }
-        }
-      }
-    }
-  }
-}
+```
+bower install litecore-lib
 ```
 
-</details>
+## Documentation
 
-### 2. Setup Bitcoin Node
+The complete docs are hosted here: [litecore documentation](http://litecore.io/guide/). There's also a [litecore API reference](http://litecore.io/api/) available generated from the JSDocs of the project, where you'll find low-level details on each litecore utility.
 
-<details>
-<summary>Example Bitcoin Mainnet Config</summary>
+- [Read the Developer Guide](http://litecore.io/guide/)
+- [Read the API Reference](http://litecore.io/api/)
 
-```sh
-whitelist=127.0.0.1
-txindex=0
-listen=1
-server=1
-irc=1
-upnp=1
+To get community assistance and ask for help with implementation questions, please use our [community forums](https://forum.litecore.io/).
 
-# Make sure port & rpcport matches the
-# bitcore.config.json ports for BTC mainnet
+## Examples
 
-# if using Bitcoin Core v0.17+ prefix
-# [main]
+* [Generate a random address](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#generate-a-random-address)
+* [Generate a address from a SHA256 hash](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#generate-a-address-from-a-sha256-hash)
+* [Import an address via WIF](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#import-an-address-via-wif)
+* [Create a Transaction](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#create-a-transaction)
+* [Sign a Bitcoin message](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
+* [Verify a Bitcoin message](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
+* [Create an OP RETURN transaction](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#create-an-op-return-transaction)
+* [Create a 2-of-3 multisig P2SH address](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
+* [Spend from a 2-of-2 multisig P2SH address](https://github.com/litecoin-project/litecore-lib/blob/master/docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
 
-port=20008
-rpcport=20009
-rpcallowip=127.0.0.1
 
-rpcuser=username
-rpcpassword=password
-```
+## Security
 
-</details>
+We're using Litecore in production, as are [many others](http://litecore.io#projects), but please use common sense when doing anything related to finances! We take no responsibility for your implementation decisions.
 
-### 3. Run Bitcoin node
-
-<details>
-<summary>Example Starting a Bitcoin Node</summary>
-
-```sh
-# Path to your bitcoin application and path to the config above
-/Applications/Bitcoin-Qt.app/Contents/MacOS/Bitcoin-Qt -datadir=/Users/username/blockchains/bitcoin-core/networks/mainnet/
-```
-
-</details>
-
-### 4. Start Bitcore
-
-```sh
-npm run node
-```
-
-## Applications
-
-- [Bitcore Node](packages/bitcore-node) - A full node with extended capabilities using Bitcoin Core
-- [Bitcore Wallet](packages/bitcore-wallet) - A command-line based wallet client
-- [Bitcore Wallet Client](packages/bitcore-wallet-client) - A client for the wallet service
-- [Bitcore Wallet Service](packages/bitcore-wallet-service) - A multisig HD service for wallets
-- [Bitpay Wallet](https://github.com/bitpay/copay) - An easy-to-use, multiplatform, multisignature, secure bitcoin wallet
-- [Insight](packages/insight) - A blockchain explorer web user interface
-
-## Libraries
-
-- [Bitcore Channel](https://github.com/bitpay/bitcore-channel) - Micropayment channels for rapidly adjusting bitcoin transactions
-- [Bitcore ECIES](https://github.com/bitpay/bitcore-ecies) - Uses ECIES symmetric key negotiation from public keys to encrypt arbitrarily long data streams
-- [Bitcore Lib](packages/bitcore-lib) - A pure and powerful JavaScript Bitcoin library
-- [Bitcore Lib Cash](packages/bitcore-lib-cash) - A pure and powerful JavaScript Bitcoin Cash library
-- [Bitcore Message](https://github.com/bitpay/bitcore-message) - Bitcoin message verification and signing
-- [Bitcore Mnemonic](packages/bitcore-mnemonic) - Implements mnemonic code for generating deterministic keys
-- [Bitcore P2P](packages/bitcore-p2p) - The peer-to-peer networking protocol for BTC
-- [Bitcore P2P Cash](packages/bitcore-p2p-cash) - The peer-to-peer networking protocol for BCH
-- [Crypto Wallet Core](packages/crypto-wallet-core) - A coin-agnostic wallet library for creating transactions, signing, and address derivation
-
-## Extras
-
-- [Bitcore Build](packages/bitcore-build) - A helper to add tasks to gulp
-- [Bitcore Client](packages/bitcore-client) - A helper to create a wallet using the bitcore-v8 infrastructure
+If you find a security issue, please email security@bitpay.com.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/bitpay/bitcore/blob/master/Contributing.md) on the main bitcore repo for information about how to contribute.
+Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/litecoin-project/litecore-lib/blob/master/CONTRIBUTING.md) file.
+
+## Building the Browser Bundle
+
+To build a litecore-lib full bundle for the browser:
+
+```sh
+gulp browser
+```
+
+This will generate files named `litecore-lib.js` and `litecore-lib.min.js`.
+
+You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout a release commit (for example, https://github.com/bitpay/bitcore-lib/commit/e33b6e3ba6a1e5830a079e02d949fce69ea33546 for v0.12.6).
+
+To verify signatures, use the following PGP keys:
+- @braydonf: https://pgp.mit.edu/pks/lookup?op=get&search=0x9BBF07CAC07A276D `D909 EFE6 70B5 F6CC 89A3 607A 9BBF 07CA C07A 276D`
+- @gabegattis: https://pgp.mit.edu/pks/lookup?op=get&search=0x441430987182732C `F3EA 8E28 29B4 EC93 88CB  B0AA 4414 3098 7182 732C`
+- @kleetus: https://pgp.mit.edu/pks/lookup?op=get&search=0x33195D27EF6BDB7F `F8B0 891C C459 C197 65C2 5043 3319 5D27 EF6B DB7F`
+- @matiu: https://pgp.mit.edu/pks/lookup?op=get&search=0x9EDE6DE4DE531FAC `25CE ED88 A1B1 0CD1 12CD  4121 9EDE 6DE4 DE53 1FAC`
+
+
+## Development & Tests
+
+```sh
+git clone https://github.com/litecoin-project/litecore-lib
+cd litecore-lib
+npm install
+```
+
+Run all the tests:
+
+```sh
+gulp test
+```
+
+You can also run just the Node.js tests with `gulp test:node`, just the browser tests with `gulp test:browser`
+or create a test coverage report (you can open `coverage/lcov-report/index.html` to visualize it) with `gulp coverage`.
 
 ## License
 
-Code released under [the MIT license](https://github.com/bitpay/bitcore/blob/master/LICENSE).
+Code released under [the MIT license](https://github.com/litecoin-project/litecore-lib/blob/master/LICENSE).
 
-Copyright 2013-2019 BitPay, Inc. Bitcore is a trademark maintained by BitPay, Inc.
+Copyright 2013-2015 BitPay, Inc. Bitcore is a trademark maintained by BitPay, Inc.
+Copyright 2016 The Litecoin Core Developers
