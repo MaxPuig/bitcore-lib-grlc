@@ -1,4 +1,4 @@
-Litecore Library
+Garlicore Library
 =======
 
 [![NPM Package](https://img.shields.io/npm/v/bitcore-lib-grlc.svg?style=flat-square)](https://www.npmjs.org/package/bitcore-lib-grlc)
