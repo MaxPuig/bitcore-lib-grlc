@@ -77,7 +77,21 @@ var transaction = new litecore.Transaction()
     .sign(privateKey);
 ```
 
+## Create a P2WPKH address
+```javascript
+const privKey = new garlicore.PrivateKey();
+const pubKey = privKey.toPublicKey();
+const address = garlicore.Address.fromPublicKey(pubKey, 'mainnet', 'witnesspubkeyhash');
+```
+
 ## Create a P2SH address
+```javascript
+const privKey = new garlicore.PrivateKey();
+const pubKey = privKey.toPublicKey();
+const address = garlicore.Address.fromPublicKey(pubKey, 'mainnet', 'scripthash');
+```
+
+## Alternative way of creating a P2SH address
 More info [here](/docs/script.md#Script-creation)
 ```javascript
 const privKey = new garlicore.PrivateKey();
