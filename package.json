@@ -1,6 +1,6 @@
 {
   "name": "bitcore-lib-grlc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A pure and powerful JavaScript Garlicoin library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
